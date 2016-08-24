@@ -15,23 +15,13 @@ class ToDo(Base):
     created_ts = Column(DateTime)
 
 
+class Items(Base):
+    __tablename__ = 'items'
+    id = Column(Integer, primary_key=True)
+    todos_id = Column(Integer)  # creatng a relationship between the two tables
+    items = Column(String(255))
+
+
 if __name__ == '__main__':
     engine = create_engine('sqlite:///./database.db')
     Base.metadata.create_all(bind=engine)
-
-
-# COMMANDS
-
-# @click.group()  # group decorator can be given multiple commands
-# def cli():
-
-
-# @click.command()
-# def initdb():
-#     click.echo('Initialized database')
-
-  # decorator coverts function to a command
-# def hello():
-#     click.echo('Hello world!')
-
-# cli.add_command(initdb)
