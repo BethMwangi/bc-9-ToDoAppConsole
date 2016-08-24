@@ -8,10 +8,12 @@ setup(
         'Click',
         'colorama',
         'termcolor',
-        'pyfiglet'
+        'pyfiglet',
+       
     ],
     entry_points='''
         [console_scripts]
-        todo=todo:hello
+        todo=todo:cli
     ''',
+
 )
