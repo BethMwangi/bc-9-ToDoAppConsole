@@ -1,18 +1,42 @@
 import os
-import sqlite3
+
 from firebase import firebase
 import click
 import colorama
 
-# db_filename = 'todo.db'
-db_is_new = not os.path.exists('todo.db')
 
-# checks for eixisting db if it doesnt exist,new db created
-conn = sqlite3.connect('todo.db')
-c = conn.cursor()
+from sqlalchemy.orm import sessionmaker
+from sqlalchemy import create_engine
+from models import Base, ToDo, Items
+
+engine = create_engine('sqlite:///./database.db')
+Base.metadata.create_all(bind=engine)
+
+#associate with the custom Session class
+DBSession = sessionmaker(bind=engine)
+session = DBSession()
 
 
+def display_todo_titlebar():
+    ''' Clears the terminal screen, and displays a title bar.'''
+    # os.system('clear')
+    print("\t**********************************************")
+    print click.secho('\t\t Jipange App', fg='green', blink=True)
+    print("\t**********************************************")
 
 
+def new_todo(name):
+    """  
+    Add a new TODO item 
+    """
+    todo = ToDo('name', 'id', )
+    session.add(todo)
+    session.commit()
 
-conn.close()
+
+def add_item(self):
+	"""Add a new item to the todo list"""
+	
+
+if __name__ == '__main__':
+ 
