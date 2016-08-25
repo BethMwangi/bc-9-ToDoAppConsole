@@ -10,6 +10,7 @@ setup(
         'termcolor',
         'pyfiglet',
        
+       
     ],
     entry_points='''
         [console_scripts]
