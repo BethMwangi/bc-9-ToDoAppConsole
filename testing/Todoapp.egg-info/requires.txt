@@ -1,4 +1,0 @@
-Click
-colorama
-termcolor
-pyfiglet

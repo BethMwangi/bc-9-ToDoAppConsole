@@ -1,39 +1,40 @@
 import os
 import sys
-import datetime
+import time
 from sqlalchemy import *
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import relationship , backref
+import datetime
 
 Base = declarative_base()
 
 
 class ToDo(Base):
-    """docstring for Todo"""
+    """create ToDo model"""
     __tablename__ = 'todos'
 
     id = Column(Integer, autoincrement= True, primary_key=True)
     name = Column(String(255), unique=True)
-    created_ts = Column(datetime.datetime.utnow)
+    created_at = Column(DateTime, default=datetime.datetime.utcnow)
+   
 
     def __repr__(self):
         '''passing the constructor'''
         return "(<ToDo(name='%s', created_ts='%s')>" % (
-            self.name, self.created_ts)
-
-
+            self.name, self.created_at)
 
 class Items(Base):
-
+  """create Item model"""
   __tablename__ = 'items'
-  item_id = Column(Integer, primary_key=True)
-  todos_id = Column(Integer)
-  items = Column(String(255))
+
+  id = Column(Integer, autoincrement= True, primary_key=True)
+  todo_id = Column(Integer, ForeignKey('todos.id'))
+  name = Column(String(255))
   completed = Column(Boolean)
+  todo = relationship(ToDo)
 
   def __repr__(self):
-    return '({0}:{1.items})'.format(Items, self)
+    return "<Item: {0} ToDo: ".format(self.name)
 
-if __name__ == '__main__':
-    engine = create_engine('sqlite:///./database.db')
-    Base.metadata.create_all(bind=engine)
+engine = create_engine('sqlite:///./database.db')
+Base.metadata.create_all(bind=engine)
