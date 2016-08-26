@@ -39,23 +39,29 @@ def open_todo(name):
 def add_item(todo, item):
     """Add a new item to the todo list"""
 
-    new_item = Items(todo_id=todo.id, name=item)
+    new_item = Items(todo_id=todo.id,name=item)
     session.add(new_item)
     session.commit()
     print (Fore.RED + "Successfully added") 
     return new_item
 
 
-def list_todo(name):
+def list_all_todos():
     """lists all the todos created"""
     todos = []
-    todos = session.query(ToDo).filter_by(todo_id=todo_id).all()
-    for todo in todos:
-        todos.append(todos.name)
+    todo_rows = session.query(ToDo).all()
+    for todo_row in todo_rows:
+        todos.append((todo_row.name, todo_row.created_at))
     print (Fore.RED + "Listing... " + todos)
+
     return todos
 
-# def list_all_items(name, item):
+
+def list_all_items(name, item):
+    """lists all the todos with items"""
+
+    pass
+
 
 
 def exit_todo():

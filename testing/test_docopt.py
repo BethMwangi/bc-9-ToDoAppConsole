@@ -87,15 +87,19 @@ class ToDo(cmd.Cmd):
     @docopt_cmd
     def do_list_all(self, arg):
         """Usage: list_all"""
-        for todo in todo_items.keys():
-            print("Items in: " + todo)
-            items = todo_items[todo]
-            for item in items:
-                print(item)
+        # for todo in todo_items.keys():
+        #     print("Items in: " + todo)
+        #     items = todo_items[todo]
+        #     for item in items:
+        #         print(item)
+        todos = todo.list_all_todos()
+        for the_todo in todos:
+        	print("Name: " + the_todo[0])
+        	print("Created At: " + str(the_todo[1]))
 
-    def do_help(self, arg):
-    	"""Usage:show all commands"""
-    	ui.help_screen()
+    # def do_help(self, arg):
+    # 	"""Usage:show all commands"""
+    # 	ui.help_screen()
 
 
 if __name__ == '__main__':
