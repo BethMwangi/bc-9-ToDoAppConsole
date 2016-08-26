@@ -1,0 +1,7 @@
+todo.py
+Todoapp.egg-info/PKG-INFO
+Todoapp.egg-info/SOURCES.txt
+Todoapp.egg-info/dependency_links.txt
+Todoapp.egg-info/entry_points.txt
+Todoapp.egg-info/requires.txt
+Todoapp.egg-info/top_level.txt
