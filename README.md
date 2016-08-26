@@ -16,6 +16,20 @@ The required commands for the application include;
 2. `Todo open`
 3. `Item add`
 
+#Installation.
+
+**To be able to get this project to your local machine**
+
+1. First git clone this project at `https://github.com/BethMwangi/bc-9-ToDoAppConsole.git`
+
+2. Navigate to the `testing` folder.
+
+3. Create a virtual environment using the `virtualenv` command and activate it.
+
+4. Install the requirements via `pip install -r requirements.txt`
+
+5. Run the application in your terminal via `python test_docopt.py`
+
 
 
 
