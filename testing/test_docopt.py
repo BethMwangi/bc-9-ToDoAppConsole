@@ -72,6 +72,14 @@ class ToDo(cmd.Cmd):
 		todo.add_item(self.todo_name, item)
 
 	@docopt_cmd
+	def do_list_todo(self, arg):
+		"""Usage: list_todo <name>"""
+		name = arg["<name>"]
+		for name in todo.name:
+			print (name)
+
+
+	@docopt_cmd
 	def do_list_all(self, arg):
 		"""Usage: list_all"""
 		for todo in todo_items.keys():
@@ -80,10 +88,7 @@ class ToDo(cmd.Cmd):
 			for item in items:
 				print(item)
 
-	@docopt_cmd
-	def do_list_todo(self, arg):
-		"""Usage: list_todo <name>"""
-		pass
+	
 
 
 if __name__ == '__main__':
