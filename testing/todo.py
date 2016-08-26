@@ -52,26 +52,14 @@ def list_all_todos():
     todo_rows = session.query(ToDo).all()
     for todo_row in todo_rows:
         todos.append((todo_row.name, todo_row.created_at))
-    # print (Fore.RED +"Listing... " + todos)
-
+   
     return todos
-
-
-def list_all_items(name):
+  
+def list_all_items(todo_name):
     """lists all the todos with items"""
-    items = session.query(Items).filter(Items.name).all()
+    items = session.query(Items).filter_by(todo_name=todo_name).all()
     print(items)
-    # count = 1
-    # s = select([Items])
-    # result = s.execute()
-    # if result:
-    #     for row in result:
-    #         q = session.query(Items).filter(Items.todo_id == row[0]).all()
-    #         count += 1
-    #         for data in q:
-    #             print data.items
-                # click.echo(click.style('>>>' + i.items  , fg='white',
-                # bold=True)
+  
 
 
 def exit_todo():
