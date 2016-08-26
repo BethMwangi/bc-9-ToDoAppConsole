@@ -27,10 +27,9 @@ class Items(Base):
     __tablename__ = 'items'
 
     id = Column(Integer, autoincrement=True, primary_key=True)
-    todo_id = Column(Integer, ForeignKey('todos.id'))
+    todo_name = Column(String(255), ForeignKey(ToDo.name))
     name = Column(String(255))
     completed = Column(Boolean)
-    todo = relationship(ToDo)
 
     def __repr__(self):
         return "<Item: {0} ToDo: ".format(self.name)
