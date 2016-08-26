@@ -42,7 +42,7 @@ def add_item(todo, item):
     new_item = Items(todo_id=todo.id, name=item)
     session.add(new_item)
     session.commit()
-    print (Back.YELLOW + "Successfully added" + new_item)
+    print (Fore.RED + "Successfully added") 
     return new_item
 
 
